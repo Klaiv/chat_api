@@ -1,7 +1,8 @@
 # Rest API for CHAT
 ---
 
-Chat API that users simple username/password authentication
+Chat API that users simple username/password authentication. <br />
+Utilized 'joi' for input sanitization, 'bycrpt' for encryption and HAPIJS server.
 
 # Getting Started
 

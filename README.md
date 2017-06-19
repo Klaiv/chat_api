@@ -28,8 +28,11 @@ DB_PASS='yourdbpassword'
 DB_USER='yourdbuser'
 DB='yourdbname'
 ```
-
-
+### Run Server
+```
+npm install
+npm start
+```
 
 
 ## Protected Endpoints
@@ -128,7 +131,7 @@ or <br />
 var request = require("request");
 
 var options = { method: 'POST',
-url: 'http://localhost:8000/messages',
+url: 'http://localhost:8000/inbox',
 headers: 
 { 'cache-control': 'no-cache',
 'content-type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' },
@@ -149,7 +152,43 @@ This route allows a user to retrieve all messages he/she has sent.
 `POST`
 * Data Params <br />
 `username=[integer]` 
-`password=[string]` 
+`password=[string]`
+* Success Response <br />
+`[
+{
+"message_id": 2,
+"message": "Call me back!",
+"to_id": 1,
+"from_id": 3
+}, ...
+]`
+* Error Response <br />
+`{
+"statusCode": 401,
+"message": "Unauthorized"
+}` <br />
+or <br />
+`{
+"statusCode": 400,
+"error": "Bad Request"}`
+* Sample Call <br />
+```
+var request = require("request");
+
+var options = { method: 'POST',
+url: 'http://localhost:8000/outbox',
+headers: 
+{ 'cache-control': 'no-cache',
+'content-type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' },
+formData: { username: 'username', password: 'mypassord' } };
+
+request(options, function (error, response, body) {
+if (error) throw new Error(error);
+
+console.log(body);
+});
+```
+
 **Edit Profile** 
 ----
 * URL : <br />

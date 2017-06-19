@@ -5,6 +5,13 @@ Chat API that users simple username/password authentication
 
 # Getting Started
 
+
+## Prerequisites
+mysql <br />
+nodejs <br />
+npm
+
+
 ### Clone repository 
 ```
 git clone https://github.com/Klaiv/cirtual_chat_api.git
@@ -25,28 +32,22 @@ DB='yourdbname'
 
 
 
-
-## Prerequisites
-
-
-
-
 ## Protected Endpoints
 ---
 **Send Message**
 ----
 This routes allows a registered user send a text message to another user given the other user's user id (to_id).
-* URL: 
+* URL: <br />
 `'/send'` 
-* Method
+* Method <br />
 `POST`   
-* URL Params:
-* `to_id=[integer]` 
-*  `message=[text]` 
-* Data Params: 
-`username=[integer]` 
+* URL Params: <br />
+`to_id=[integer]` <br />
+`message=[text]` 
+* Data Params: <br />
+`username=[integer]` <br />
 `password=[string]` 
-* Success Response
+* Success Response <br />
 `{
 "fieldCount": 0,
 "affectedRows": 1,
@@ -57,16 +58,16 @@ This routes allows a registered user send a text message to another user given t
 "protocol41": true,
 "changedRows": 0
 }`
-* Error Response
+* Error Response <br />
 `{
 "statusCode": 401,
 "message": "Unauthorized"
-}`
-or
+}` <br />
+or <br />
 `{
 "statusCode": 400,
 "error": "Bad Request"}`
-* Sample Call :  
+* Sample Call :  <br />
 ```
 var request = require("request");
 var options = { method: 'POST',
@@ -91,14 +92,14 @@ console.log(body);
 **Get Messages Inbox**
 ----
 This route allows a user to retrieve all messages he/she received.
-* URL: 
+* URL: <br />
 `'/inbox'`
-* Method
+* Method <br />
 `POST`
-* Data Params 
+* Data Params <br />
 `username=[integer]` 
 `password=[string]` 
-* Success Response
+* Success Response <br />
 `[
 {
 "message_id": 2,
@@ -113,16 +114,16 @@ This route allows a user to retrieve all messages he/she received.
 "from_id": 4
 }
 ]`
-* Error Response
+* Error Response <br />
 `{
 "statusCode": 401,
 "message": "Unauthorized"
-}`
-or
+}` <br />
+or <br />
 `{
 "statusCode": 400,
 "error": "Bad Request"}`
-* Sample Call
+* Sample Call <br />
 ```
 var request = require("request");
 
@@ -142,21 +143,22 @@ console.log(body);
 **Get Messages Outbox**
 ----
 This route allows a user to retrieve all messages he/she has sent.
-* URL: 
+* URL: <br />
 `'/outbox'`
-* Method
+* Method <br />
 `POST`
-* Data Params 
+* Data Params <br />
 `username=[integer]` 
 `password=[string]` 
 **Edit Profile** 
-* URL : 
+----
+* URL : <br />
 `'/edit' `
-* Data Params: 
-`email=[alphanumeric]`
-`password=[alphanumeric]`, 
+* Data Params: <br />
+`email=[alphanumeric]` <br />
+`password=[alphanumeric]` <br /> 
 `username=[alphanumeric]`
-* Success Response
+* Success Response <br />
 `[
 {
 "message_id": 2,
@@ -171,16 +173,16 @@ This route allows a user to retrieve all messages he/she has sent.
 "from_id": 1
 }
 ]`
-* Error Response
+* Error Response <br />
 `{
 "statusCode": 401,
 "message": "Unauthorized"
-}`
-or
+}` <br />
+or <br />
 `{
 "statusCode": 400,
 "error": "Bad Request"}`
-* Sample Call
+* Sample Call <br />
 ```
 var request = require("request");
 
@@ -198,23 +200,37 @@ console.log(body);
 })
 ```
 
-**Delete Message**
+**Delete Message** 
 ----
 This route allows a user to delete a message in the inbox.
-* URL : 
+* URL : <br />
 `/message/{message_id}`
-* METHOD: 
+* METHOD: <br />
 `DELETE`
-* Data Params: 
-`username=[alphanumeric]`
-`password=[alphanumeric]`
-* Success Response
-* Error Response
-or
+* Data Params: <br />
+`username=[alphanumeric]` <br />
+`password=[alphanumeric]` <br />
+* Success Response <br />
+`{
+statusCode: 200,
+message: 'Message Deleted',
+}`
+* Error Response <br />
+`{
+statusCode: 404,
+message: 'Message Not Found',
+}` <br />
+or <br />
+`{
+statusCode: 401,
+message: 'Unauthorized',
+}`
+<br />
+or <br />
 `{
 "statusCode": 400,
 "error": "Bad Request"}`
-* Sample Call
+* Sample Call <br />
 ```
 var request = require("request");
 var options = { method: 'DELETE',
@@ -235,13 +251,13 @@ console.log(body);
 **Register New User**
 ----
 This route allows for anyone to sign up and be able to make requests to the API.
-* URL: 
+* URL: <br />
 `'/register'` 
 * Data Params: 
-`username=[alphanumeric]`
-`email=[alphanumeric]`, 
+`username=[alphanumeric]` <br />
+`email=[alphanumeric]`<br /> 
 `password=[alphanumeric]`
-* Success Response
+* Success Response <br />
 `{
 "fieldCount": 0,
 "affectedRows": 1,
@@ -252,11 +268,11 @@ This route allows for anyone to sign up and be able to make requests to the API.
 "protocol41": true,
 "changedRows": 0
 }`
-* Error Response
+* Error Response <br />
 `{
 "statusCode": 400,
 "error": "Bad Request"}`
-* Sample Call
+* Sample Call <br />
 ```
 var request = require("request");
 var options = { method: 'POST',
@@ -278,11 +294,11 @@ console.log(body);
 **List All Users** 
 ----
 This route lists all the users currently using API.
-* URL: 
+* URL: <br />
 `'/users'` 
-* METHOD: 
+* METHOD: <br />
 `GET`
-* Success Response
+* Success Response <br />
 `[
 {
 "user_id": 1,
@@ -291,7 +307,7 @@ This route lists all the users currently using API.
 },
 ...
 ]`
-* Sample Call
+* Sample Call <br />
 ```
 var request = require("request");
 var options = { method: 'GET',
@@ -309,15 +325,16 @@ console.log(body);
 **Search Users**
 ----
 This route allows anyone to search the user list by username or partial username. 
-* URL: 
-`'/users/search/{search_text}'`
-or search by user_id
+* URL: <br />
+`'/users/search/{search_text}'` <br />
+or 
+search by user_id <br />
 `'/user/{user_id}'`
-* Method
+* Method <br />
 `GET`
-* URL Params: 
+* URL Params: <br />
 `{search_text} =[alpanumeric]`
-* Success Response
+* Success Response <br />
 `[
 {
 "user_id": 1,
@@ -325,7 +342,7 @@ or search by user_id
 "email": "tests@me.com"
 }
 ] `
-* Sample Call
+* Sample Call <br />
 ```
 var request = require("request");
 var options = { method: 'GET',

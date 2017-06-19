@@ -34,7 +34,113 @@ DB='yourdbname'
 npm install
 npm start
 ```
+## Public Endpoints
+---
+**Register New User**
+----
+This route allows for anyone to sign up and be able to make requests to the API.
+* URL: <br />
+`'/register'` 
+* Data Params: 
+`username=[alphanumeric]` <br />
+`email=[alphanumeric]`<br /> 
+`password=[alphanumeric]`
+* Success Response <br />
+`{
+"fieldCount": 0,
+"affectedRows": 1,
+"insertId": 6,
+"serverStatus": 2,
+"warningCount": 0,
+"message": "",
+"protocol41": true,
+"changedRows": 0
+}`
+* Error Response <br />
+`{
+"statusCode": 400,
+"error": "Bad Request"}`
+* Sample Call <br />
+```
+var request = require("request");
+var options = { method: 'POST',
+url: 'http://localhost:8000/register',
+headers: 
+{   'cache-control': 'no-cache',
+'content-type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' },
+formData: 
+{ username: 'myusername',
+email: 'myemail@me.com',
+password: 'myPassword' } };
+request(options, function (error, response, body) {
+if (error) throw new Error(error);
+console.log(body);
+});
+```
 
+**List All Users** 
+----
+This route lists all the users currently using API.
+* URL: <br />
+`'/users'` 
+* METHOD: <br />
+`GET`
+* Success Response <br />
+`[
+{
+"user_id": 1,
+"username": "myusername",
+"email": "tests@me.com"
+},
+...
+]`
+* Sample Call <br />
+```
+var request = require("request");
+var options = { method: 'GET',
+url: 'http://localhost:8000/users',
+headers: 
+{  'cache-control': 'no-cache',
+'content-type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' },
+formData: { '': '' } };
+request(options, function (error, response, body) {
+if (error) throw new Error(error);
+console.log(body);
+});
+```
+
+**Search Users**
+----
+This route allows anyone to search the user list by username or partial username. 
+* URL: <br />
+`'/users/search/{search_text}'` <br />
+or 
+search by user_id <br />
+`'/user/{user_id}'`
+* Method <br />
+`GET`
+* URL Params: <br />
+`{search_text} =[alpanumeric]`
+* Success Response <br />
+`[
+{
+"user_id": 1,
+"username": "myusername",
+"email": "tests@me.com"
+}
+] `
+* Sample Call <br />
+```
+var request = require("request");
+var options = { method: 'GET',
+url: 'http://localhost:8000/user/search/user',
+headers: 
+{ 'cache-control': 'no-cache' } };
+request(options, function (error, response, body) {
+if (error) throw new Error(error);
+console.log(body);
+});`
+```
 
 ## Protected Endpoints
 ---
@@ -280,113 +386,6 @@ console.log(body);
 });
 ```
 
-## Public Endpoints
----
-**Register New User**
-----
-This route allows for anyone to sign up and be able to make requests to the API.
-* URL: <br />
-`'/register'` 
-* Data Params: 
-`username=[alphanumeric]` <br />
-`email=[alphanumeric]`<br /> 
-`password=[alphanumeric]`
-* Success Response <br />
-`{
-"fieldCount": 0,
-"affectedRows": 1,
-"insertId": 6,
-"serverStatus": 2,
-"warningCount": 0,
-"message": "",
-"protocol41": true,
-"changedRows": 0
-}`
-* Error Response <br />
-`{
-"statusCode": 400,
-"error": "Bad Request"}`
-* Sample Call <br />
-```
-var request = require("request");
-var options = { method: 'POST',
-url: 'http://localhost:8000/register',
-headers: 
-{   'cache-control': 'no-cache',
-'content-type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' },
-formData: 
-{ username: 'myusername',
-email: 'myemail@me.com',
-password: 'myPassword' } };
-request(options, function (error, response, body) {
-if (error) throw new Error(error);
-console.log(body);
-});
-```
-
-**List All Users** 
-----
-This route lists all the users currently using API.
-* URL: <br />
-`'/users'` 
-* METHOD: <br />
-`GET`
-* Success Response <br />
-`[
-{
-"user_id": 1,
-"username": "myusername",
-"email": "tests@me.com"
-},
-...
-]`
-* Sample Call <br />
-```
-var request = require("request");
-var options = { method: 'GET',
-url: 'http://localhost:8000/users',
-headers: 
-{  'cache-control': 'no-cache',
-'content-type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' },
-formData: { '': '' } };
-request(options, function (error, response, body) {
-if (error) throw new Error(error);
-console.log(body);
-});
-```
-
-**Search Users**
-----
-This route allows anyone to search the user list by username or partial username. 
-* URL: <br />
-`'/users/search/{search_text}'` <br />
-or 
-search by user_id <br />
-`'/user/{user_id}'`
-* Method <br />
-`GET`
-* URL Params: <br />
-`{search_text} =[alpanumeric]`
-* Success Response <br />
-`[
-{
-"user_id": 1,
-"username": "myusername",
-"email": "tests@me.com"
-}
-] `
-* Sample Call <br />
-```
-var request = require("request");
-var options = { method: 'GET',
-url: 'http://localhost:8000/user/search/user',
-headers: 
-{ 'cache-control': 'no-cache' } };
-request(options, function (error, response, body) {
-if (error) throw new Error(error);
-console.log(body);
-});`
-```
 
 ## Testing
 

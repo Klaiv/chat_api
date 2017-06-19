@@ -41,7 +41,7 @@ npm start
 This route allows for anyone to sign up and be able to make requests to the API.
 * URL: <br />
 `'/register'` 
-* Data Params: 
+* Data Params: <br />
 `username=[alphanumeric]` <br />
 `email=[alphanumeric]`<br /> 
 `password=[alphanumeric]`

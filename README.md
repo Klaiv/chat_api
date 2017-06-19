@@ -160,7 +160,7 @@ This route allows a user to retrieve all messages he/she has sent.
 "message": "Call me back!",
 "to_id": 1,
 "from_id": 3
-}, ...
+}
 ]`
 * Error Response <br />
 `{
@@ -172,19 +172,17 @@ or <br />
 "statusCode": 400,
 "error": "Bad Request"}`
 * Sample Call <br />
+
 ```
 var request = require("request");
-
 var options = { method: 'POST',
 url: 'http://localhost:8000/outbox',
 headers: 
 { 'cache-control': 'no-cache',
 'content-type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' },
 formData: { username: 'username', password: 'mypassord' } };
-
 request(options, function (error, response, body) {
 if (error) throw new Error(error);
-
 console.log(body);
 });
 ```
@@ -224,17 +222,14 @@ or <br />
 * Sample Call <br />
 ```
 var request = require("request");
-
 var options = { method: 'POST',
 url: 'http://localhost:8000/user/edit',
 headers: 
 { 'cache-control': 'no-cache',
 'content-type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' },
 formData: { username: 'username', password: 'mypassword', email: 'email@test.com' } };
-
 request(options, function (error, response, body) {
 if (error) throw new Error(error);
-
 console.log(body);
 })
 ```
@@ -280,7 +275,6 @@ headers:
 formData: { username: 'myusername', password: 'mypassword' } };
 request(options, function (error, response, body) {
 if (error) throw new Error(error);
-
 console.log(body);
 });
 ```
@@ -323,7 +317,6 @@ formData:
 { username: 'myusername',
 email: 'myemail@me.com',
 password: 'myPassword' } };
-
 request(options, function (error, response, body) {
 if (error) throw new Error(error);
 console.log(body);

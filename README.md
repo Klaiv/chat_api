@@ -4,21 +4,24 @@
 Chat API that users simple username/password authentication
 
 # Getting Started
+
+### Clone repository 
+```
+git clone https://github.com/Klaiv/cirtual_chat_api.git
+cd cirtual_chat_api 
+```
 ### Connect Database
 1. Create MySQL database using the dump file database_dump.sql 
 2. Configure your .env file in root directory using the example .env.sample [.env.sample](.env.sample) file attached with your database credentials
+
+Create .env file in root using example .env.sample e.g. 
 ```
 DB_HOST=localhost
 DB_PASS='yourdbpassword'
 DB_USER='yourdbuser'
 DB='yourdbname'
 ```
-### Clone repository 
-```
-cd [repository] 
-npm install
-npm start 
-```
+
 
 
 

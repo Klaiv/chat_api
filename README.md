@@ -381,8 +381,7 @@ var request = require("request");
 var options = { method: 'GET',
 url: 'http://localhost:8000/user/search/user',
 headers: 
-{ 'postman-token': '4aa56059-c4c4-3dc3-ebb9-a4c20556e821',
-'cache-control': 'no-cache' } };
+{ 'cache-control': 'no-cache' } };
 request(options, function (error, response, body) {
 if (error) throw new Error(error);
 console.log(body);

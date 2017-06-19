@@ -264,11 +264,11 @@ or <br />
 statusCode: 401,
 message: 'Unauthorized',
 }`
-<br />
 or <br />
 `{
 "statusCode": 400,
 "error": "Bad Request"}`
+ <br />
 * Sample Call <br />
 ```
 var request = require("request");

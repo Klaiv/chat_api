@@ -370,8 +370,9 @@ or <br />
 `{
 "statusCode": 400,
 "error": "Bad Request"}`
- <br />
+
 * Sample Call <br />
+
 ```
 var request = require("request");
 var options = { method: 'DELETE',

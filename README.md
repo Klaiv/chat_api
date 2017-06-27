@@ -15,8 +15,8 @@ npm
 
 ### Clone repository 
 ```
-git clone https://github.com/Klaiv/cirtual_chat_api.git
-cd cirtual_chat_api 
+git clone https://github.com/Klaiv/chat_api.git
+cd chat_api 
 ```
 ### Connect Database
 1. Create MySQL database using the dump file database_dump.sql 
